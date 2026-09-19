@@ -949,7 +949,7 @@ document.getElementById('toggle').addEventListener('click', async () => {
             //document.getElementById('reset').disabled = true; 暂时取消，需要时可以重置时间码为00：00：00
         }
 
-        navigator.mediaDevices.getUserMedia({ audio: true })
+        navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: { exact: 'remote-only'}, autoGainControl: false, noiseSuppression: false} })
             .then(async stream => {
                 activeAudioStream = stream;
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
